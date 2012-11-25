@@ -40,5 +40,9 @@
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
 	<bean id="nativeJdbcExtractor" class="org.springframework.jdbc.support.nativejdbc.SimpleNativeJdbcExtractor" lazy-init="true"/>
+	
+	<bean id="userDao" class="kr.ac.gnu.user.dao.UserDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
 
 </beans>

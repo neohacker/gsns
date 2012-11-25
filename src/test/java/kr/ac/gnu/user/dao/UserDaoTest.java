@@ -2,23 +2,31 @@ package kr.ac.gnu.user.dao;
 
 import java.sql.SQLException;
 
-import javax.sql.DataSource;
-
 import kr.ac.gnu.user.domain.User;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.jdbc.datasource.SingleConnectionDataSource;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 
-
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/spring/applicationContext.xml"})
+@DirtiesContext
 public class UserDaoTest {
 	
-	UserDao dao;
+	@Autowired
+	ApplicationContext context;
+	
+	private UserDao dao;
 	
 	private User user1;
 	private User user2;
@@ -26,15 +34,12 @@ public class UserDaoTest {
 	
 	@Before
 	public void setUp() {
+		
+		this.dao = this.context.getBean("userDao", UserDao.class);
 
 		this.user1 = new User("gyumee", "박성철", "springno1","gyumee@mail.com");
 		this.user2 = new User("leegw700","이길원", "springno2","leegw700@mail.com");
 		this.user3 = new User("bumjin", "박범진", "springno3","bumjin@mail.com");
-		
-		dao = new UserDao();
-		
-		DataSource dataSource = new SingleConnectionDataSource("jdbc:mysql://aws.miraesoft.kr/gsns", "gsns", "ahffk", true);
-		dao.setDataSource(dataSource);
 	}
 	
 	@Test
