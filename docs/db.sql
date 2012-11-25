@@ -1,3 +1,5 @@
+-- 사용자
+
 CREATE TABLE `Users` (
   `no` int(11) NOT NULL AUTO_INCREMENT,
   `id` varchar(100) NOT NULL,
