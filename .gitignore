@@ -1,6 +1,7 @@
 *.class
 *.project
 target
+.settings
 
 
 # Package Files #
