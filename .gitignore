@@ -2,6 +2,7 @@
 *.project
 target
 .settings
+.classpath
 
 
 # Package Files #
