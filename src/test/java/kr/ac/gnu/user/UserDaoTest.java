@@ -1,7 +1,8 @@
-package kr.ac.gnu.user.dao;
+package kr.ac.gnu.user;
 
 import java.sql.SQLException;
 
+import kr.ac.gnu.user.UserDao;
 import kr.ac.gnu.user.domain.User;
 
 import org.junit.Before;

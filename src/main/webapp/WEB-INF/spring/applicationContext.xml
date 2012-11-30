@@ -21,6 +21,10 @@
 	<context:annotation-config />
 	
 	<context:property-placeholder location="classpath:mirae.properties"/>
+	
+	<context:component-scan base-package="kr.ac.gnu" use-default-filters="true">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
 
 	
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" 
@@ -41,7 +45,7 @@
 
 	<bean id="nativeJdbcExtractor" class="org.springframework.jdbc.support.nativejdbc.SimpleNativeJdbcExtractor" lazy-init="true"/>
 	
-	<bean id="userDao" class="kr.ac.gnu.user.dao.UserDao">
+	<bean id="userDao" class="kr.ac.gnu.user.UserDao">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 

@@ -10,6 +10,10 @@
 
 	<context:annotation-config />
 
+	<context:component-scan base-package="kr" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+
 	<bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
 		<property name="configLocation" value="classpath:velocity.properties" />
 		<property name="resourceLoaderPath" value="/" />
